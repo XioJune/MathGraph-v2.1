@@ -49,7 +49,8 @@ namespace MathGraph_v2._0
             textBox3.Text = "0";
             textBox4.Text = "0";
             textBox5.Text = "0";
-
+            f1.Name = "Function 1";
+            f2.Name = "Function 2";
         }
 
         public int radio;
@@ -59,10 +60,18 @@ namespace MathGraph_v2._0
         Series square = new Series();
         double[] memory_f1 = new double[100];
         double[] memory_f2 = new double[100];
+        
         public int func; 
         private void button1_Click(object sender, EventArgs e)
         {
+
             square.Points.Clear();
+            try
+            {
+                chart1.Series.Remove(square);
+            }
+            catch (Exception ex) { }
+            finally { 
             double summ = 0;
             for (int i = 0; i < memory_f1.Count(); i++) {
                 summ += (memory_f1[i]/ memory_f1.Count() - memory_f2[i]/ memory_f1.Count());
@@ -70,15 +79,16 @@ namespace MathGraph_v2._0
                 square.Points.AddXY(Convert.ToDouble(i) / 100, memory_f2[i]);
             }
             square.ChartType = SeriesChartType.Line;
-            chart1.Series.Add(square);
+                square.Name = "Square";
+                chart1.Series.Add(square);
             textBox4.Text = summ.ToString();
+        }
         }
 
         public void update_function(object sender, EventArgs e, Series x) 
         {
             x.ChartType = SeriesChartType.Line;
             x.Points.Clear();
-            
                 double []memory = new double[100];
             try
             {
@@ -144,7 +154,6 @@ namespace MathGraph_v2._0
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
             if (func == 1)
                 update_function(sender, e, f1);
             else update_function(sender, e, f2);

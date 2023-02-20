@@ -57,6 +57,8 @@
             // 
             // chart1
             // 
+            this.chart1.BackColor = System.Drawing.Color.Wheat;
+            this.chart1.CausesValidation = false;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -206,10 +208,12 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
             this.radioButton3.Location = new System.Drawing.Point(6, 56);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(68, 24);
             this.radioButton3.TabIndex = 10;
+            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Func2";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
